@@ -18,6 +18,16 @@ public class DeckTest {
   }
 
   @Test
+  public void deckIsEmpty() throws Exception {
+    mDeck = new Deck();
+    Card testCard;
+    for(int i=0; i<53; i++) {
+      testCard = mDeck.draw();
+    }
+    assertEquals(0, mDeck.cardsRemaining());
+  }
+
+  @Test
   public void newDeckIsOrdered() {
     mDeck = new Deck();
     Card testCard = mDeck.draw();

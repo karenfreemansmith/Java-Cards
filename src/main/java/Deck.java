@@ -23,7 +23,7 @@ public class Deck {
     try {
       this.cards[nextCard].dealCard();
       nextCard++;
-    } catch(NullPointerException e) {
+    } catch(ArrayIndexOutOfBoundsException e) {
       e.printStackTrace();
     }
     return this.cards[nextCard-1];
