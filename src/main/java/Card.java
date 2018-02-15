@@ -34,6 +34,9 @@ public class Card {
   @Override
   public String toString() {
     if(this.faceUp) {
+      if(!this.faceValue.equals("10")) {
+        this.suit+=" ";
+      }
       return this.faceValue + this.suit;
     } else {
       return "XXX";
