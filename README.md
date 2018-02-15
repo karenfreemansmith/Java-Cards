@@ -23,8 +23,6 @@ You should be able to “shuffle” the deck.  You should also be able to draw c
   properties
   - collection of cards
     - has 52 cards total
-    - has 13 faceValues in each of 4 suits
-    - 4 suits in each of 13 faceValues
   methods
   - reset
     - deck is ordered
@@ -38,6 +36,7 @@ You should be able to “shuffle” the deck.  You should also be able to draw c
 
 ## Setup/Installation
 * Clone directory
+* (To run tests only: gradle test)
 * Run gradle compileJava
 * navigate to build/classes/main
 * run program by typing "java App"
