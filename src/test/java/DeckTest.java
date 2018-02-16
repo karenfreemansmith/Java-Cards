@@ -32,7 +32,7 @@ public class DeckTest {
     mDeck = new Deck();
     Card testCard = mDeck.draw();
     testCard.showCard();
-    assertEquals("A♣️", testCard.toString());
+    assertEquals("A♣️ ", testCard.toString());
   }
 
   @Test
@@ -42,6 +42,6 @@ public class DeckTest {
     mDeck.shuffle();
     Card testCard = mDeck.draw();
     testCard.showCard();
-    assertNotEquals("A♣️", testCard.toString());
+    assertNotEquals("A♣️ ", testCard.toString());
   }
 }

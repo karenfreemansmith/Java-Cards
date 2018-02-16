@@ -12,7 +12,7 @@ public class CardTest {
   @Test
   public void cardToStringReturnsCorrectStringForFaceUp() {
     mCard.showCard();
-    assertEquals("A♠️", mCard.toString());
+    assertEquals("A♠️ ", mCard.toString());
   }
 
   @Test
@@ -32,6 +32,4 @@ public class CardTest {
     mCard.returnCard();
     assertEquals(true, mCard.isInDeck());
   }
-
-
 }
