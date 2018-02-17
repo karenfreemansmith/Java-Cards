@@ -22,6 +22,18 @@ public class CardTest {
   }
 
   @Test
+  public void cardImageReturnsCorrectStringForFaceUp() {
+    mCard.showCard();
+    assertEquals("As.jpg", mCard.getImageURI());
+  }
+
+  @Test
+  public void cardImageReturnsCorrectStringforNotFaceUp() {
+    mCard.hideCard();
+    assertEquals("x3.jpg", mCard.getImageURI());
+  }
+
+  @Test
   public void dealtCardNotInDeck() {
     mCard.dealCard();
     assertEquals(false, mCard.isInDeck());
