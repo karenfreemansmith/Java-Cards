@@ -1,8 +1,11 @@
 # Java Card Deck
-Version 0.0.0: February 15, 2018 by [Karen Freeman-Smith](https://github.com/karenfreemansmith)
+Version 0.0.2: February 17, 2018 by [Karen Freeman-Smith](https://github.com/karenfreemansmith)
 
 ## Description
-a set of classes that represent a deck of cards
+a set of classes that represent a deck of cards, refactored with swing
+
+![screenshot of project running](screenshot.png)
+
 
 ## Specifications
 You should be able to “shuffle” the deck.  You should also be able to draw cards from the deck one at a time until the deck is empty.  Include tests.
@@ -14,10 +17,11 @@ You should be able to “shuffle” the deck.  You should also be able to draw c
   - faceUp (boolean)
   - inDeck (boolean)
   methods
-  - flip (toggles faceup)
+  - showCard (to show face)
+  - hideCard (to show back)
   - toString
-    - returns faceValue & suit if faceUp
-    - returns XXX if not faceUp
+    - returns card face image (filename) if face up
+    - returns card back image (filename) if not face up
 
 * Deck class:
   properties
