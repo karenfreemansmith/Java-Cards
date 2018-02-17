@@ -3,3 +3,4 @@ build/
 gradle/
 gradlew*
 settings.gradle
+.DS_Store
