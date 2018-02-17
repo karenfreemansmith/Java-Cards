@@ -11,6 +11,7 @@ public class App implements ActionListener{
   JButton newDeckBtn;
   JButton shuffleBtn;
   JButton draw5Btn;
+  JTextArea cardDisplay;
 
   public static void main(String[] args) {
     App swingApp = new App();
@@ -28,7 +29,13 @@ public class App implements ActionListener{
     draw5Btn = new JButton("Draw 5 Cards");
     draw5Btn.addActionListener(this);
     frame.getContentPane().add(draw5Btn);
-    frame.setSize(500,150);
+    frame.setSize(640,480);
+    cardDisplay = new JTextArea("",20,50);
+    cardDisplay.setFont(new Font("Courier New", Font.PLAIN, 16));
+    cardDisplay.setLineWrap(true);
+    cardDisplay.setWrapStyleWord(true);
+    JScrollPane scroll = new JScrollPane(cardDisplay, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    frame.getContentPane().add(scroll);
     FlowLayout flo = new FlowLayout();
     frame.setLayout(flo);
     frame.setVisible(true);
@@ -46,7 +53,7 @@ public class App implements ActionListener{
     }
   }
 
-  private static void showNewCards(Deck mycards) {
+  private void showNewCards(Deck mycards) {
     Card mycard = mycards.draw();
     mycards = new Deck();
     for(int i=0; i<52; i++) {
@@ -55,7 +62,7 @@ public class App implements ActionListener{
       printCard(mycard);
     }
   }
-  private static void showShuffledCards(Deck mycards) {
+  private void showShuffledCards(Deck mycards) {
     Card mycard = mycards.draw();
     mycards = new Deck();
     mycards.shuffle();
@@ -65,7 +72,7 @@ public class App implements ActionListener{
       printCard(mycard);
     }
   }
-  private static void showFiveCards(Deck mycards) {
+  private void showFiveCards(Deck mycards) {
     mycards = new Deck();
     mycards.shuffle();
     Card mycard1 = mycards.draw();
@@ -78,21 +85,24 @@ public class App implements ActionListener{
     mycard4.showCard();
     Card mycard5 = mycards.draw();
     mycard5.showCard();
-    System.out.println(" _____   _____   _____   _____   _____ ");
-    System.out.println("|     | |     | |     | |     | |     |");
-    System.out.println("|     | |     | |     | |     | |     |");
-    System.out.println("| " + mycard1.toString() + " | | " + mycard2.toString() + " | | " + mycard3.toString() + " | | " + mycard4.toString() + " | | " + mycard5.toString() + " |");
-    System.out.println("|     | |     | |     | |     | |     |");
-    System.out.println("|     | |     | |     | |     | |     |");
-    System.out.println(" _____   _____   _____   _____   _____ ");
+    String pCard = "";
+    pCard += " _____\t _____\t _____\t _____\t _____\n";
+    pCard += "|     |\t|     |\t|     |\t|     |\t|     |\n";
+    pCard += "|     |\t|     |\t|     |\t|     |\t|     |\n";
+    pCard += "| " + mycard1.toString() + "|\t| " + mycard2.toString() + "|\t| " + mycard3.toString() + "|\t| " + mycard4.toString() + "|\t| " + mycard5.toString() + "|\n";
+    pCard += "|     |\t|     |\t|     |\t|     |\t|     |\n";
+    pCard += "|_____|\t|_____|\t|_____|\t|_____|\t|_____|\n\n";
+    cardDisplay.append(pCard);
   }
-  private static void printCard(Card c) {
-    System.out.println(" _____");
-    System.out.println("|     |");
-    System.out.println("|     |");
-    System.out.println("| " + c.toString() + " |");
-    System.out.println("|     |");
-    System.out.println("|_____|\n");
+  private void printCard(Card c) {
+    String pCard = "";
+    pCard += " _____\n";
+    pCard += "|     |\n";
+    pCard += "|     |\n";
+    pCard += "| " + c.toString() + "|\n";
+    pCard += "|     |\n";
+    pCard += "|_____|\n\n";
+    cardDisplay.append(pCard);
   }
 
 }
