@@ -1,32 +1,48 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class App {
-  public static void main(String[] args) {
-    Deck mycards = new Deck();
-    String menu = "Welcome to Play Cards!\n";
-    menu += "Enter 1 to view new deck\n";
-    menu += "Enter 2 to view shuffled deck\n";
-    menu += "Enter 3 to draw 5 cards from shuffled deck\n";
-    menu += "Enter 9 to quit\n";
-    int activity = Integer.parseInt(prompt(menu));
-    while(activity <= 3) {
-      switch (activity) {
-        case 1:
-          showNewCards(mycards);
-          break;
-        case 2:
-          showShuffledCards(mycards);
-          break;
-        case 3:
-          showFiveCards(mycards);
-          break;
-        default:
 
-          break;
-      }
-      activity = Integer.parseInt(prompt(menu));
+public class App implements ActionListener{
+  Deck mycards = new Deck();
+  JButton newDeckBtn;
+  JButton shuffleBtn;
+  JButton draw5Btn;
+
+  public static void main(String[] args) {
+    App swingApp = new App();
+    swingApp.showIt();
+  }
+
+  public void showIt() {
+    JFrame frame = new JFrame();
+    newDeckBtn = new JButton("New Deck");
+    newDeckBtn.addActionListener(this);
+    frame.getContentPane().add(newDeckBtn);
+    shuffleBtn = new JButton("Shuffle");
+    shuffleBtn.addActionListener(this);
+    frame.getContentPane().add(shuffleBtn);
+    draw5Btn = new JButton("Draw 5 Cards");
+    draw5Btn.addActionListener(this);
+    frame.getContentPane().add(draw5Btn);
+    frame.setSize(500,150);
+    FlowLayout flo = new FlowLayout();
+    frame.setLayout(flo);
+    frame.setVisible(true);
+  }
+
+  public void actionPerformed(ActionEvent event) {
+    if(event.getActionCommand().equals("New Deck")) {
+      showNewCards(mycards);
+    }
+    if(event.getActionCommand().equals("Shuffle")) {
+      showShuffledCards(mycards);
+    }
+    if(event.getActionCommand().equals("Draw 5 Cards")) {
+      showFiveCards(mycards);
     }
   }
 
@@ -78,15 +94,5 @@ public class App {
     System.out.println("|     |");
     System.out.println("|_____|\n");
   }
-  private static String prompt(String s) {
-    String response="";
-    System.out.println(s);
-    try {
-      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-      response = bufferedReader.readLine();
-    } catch(IOException e) {
-      e.printStackTrace();
-    }
-    return response;
-  }
+
 }
